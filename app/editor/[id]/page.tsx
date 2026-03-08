@@ -1,11 +1,19 @@
 export default function Home() {
   return (
-    <main className="p-10">
-      <h1 className="text-3xl font-bold mb-6">
-        Realtime Spreadsheet
-      </h1>
+    <main style={{ padding: "40px", fontFamily: "Arial" }}>
+      <h1>Realtime Spreadsheet Dashboard</h1>
 
-      <button className="bg-blue-500 text-white px-4 py-2 rounded">
+      <p>Your project is deployed successfully 🎉</p>
+
+      <button
+        style={{
+          marginTop: "20px",
+          padding: "10px 20px",
+          background: "blue",
+          color: "white",
+          borderRadius: "5px"
+        }}
+      >
         Create New Spreadsheet
       </button>
     </main>
