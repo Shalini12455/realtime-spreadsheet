@@ -1,29 +1,15 @@
-export function evaluateFormula(
-formula:string,
-cells:Record<string,number>
-){
+export function evaluateFormula(formula: string, cells: any) {
+  if (!formula.startsWith("=")) return formula;
 
-if(!formula.startsWith("=")) return formula;
+  const expression = formula.substring(1);
 
-if(formula.startsWith("=SUM")){
+  try {
+    const replaced = expression.replace(/[A-Z][0-9]+/g, (match) => {
+      return cells[match] || 0;
+    });
 
-const range = formula.match(/\((.*)\)/)?.[1];
-
-if(!range) return 0;
-
-const [start,end] = range.split(":");
-
-let sum=0;
-
-for(let key in cells){
-
-sum += Number(cells[key]);
-
-}
-
-return sum;
-
-}
-
-return formula;
+    return eval(replaced);
+  } catch {
+    return "ERROR";
+  }
 }
